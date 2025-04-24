@@ -10,9 +10,11 @@ def main(page: ft.Page):
     page.window.width = 375
     page.window.height = 667
 
-    def salvar_nome(e):
-
     # Funções
+    lista = []
+    def salvar_nome(e):
+            lista.append(input_nome.value)
+
     def gerencia_rotas(e):
         page.views.clear()
         page.views.append(
