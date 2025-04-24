@@ -16,6 +16,7 @@ def main(page: ft.Page):
             lista.append(input_nome.value)
 
     def exibir_lista(e):
+        lv_nome.controls.clear()
         for nome in lista:
             lv_nome.controls.append(
                 ft.Text(value=nome)
