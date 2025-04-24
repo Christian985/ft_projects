@@ -1,27 +1,36 @@
 import flet as ft
 from flet import AppBar, Text, View
+from flet.auth import user
 from flet.core.colors import Colors
 
+class User():
+    def __init__(self, profissao, salario):
+        self.profissao = profissao
+        self.salario = salario
 
 def main(page: ft.Page):
     # Configurações
-    page.title = "Exemplo de Rotas"
+    page.title = "Trabalho"
     page.theme_mode = ft.ThemeMode.DARK  # ou ft.ThemeMode.DARK
     page.window.width = 375
     page.window.height = 667
 
     # Funções
     lista = []
-    def salvar_profissao(e):
-        if input_profissao.value == "":
+    def salvar_tudo(e):
+        if input_profissao.value == "" and input_salario.value == "":
             # Overlay vai apagar a mensagem anterior
             page.overlay.append(msg_erro)
             # Vai abrir a mensagem
             msg_erro.open = True
             page.update()
         else:
-            # Adiciona o valor de input_nome na lista
-            lista.append(input_profissao.value)
+            obj_user = User(
+                profissao=input_profissao.value,
+                salario=0,
+            )
+            # Adiciona o valor de input_profissão e input_salário na lista
+            lista.append(obj_user)
             input_profissao.value = ""
             # Overlay vai apagar a mensagem anterior
             page.overlay.append(msg_sucesso)
@@ -31,9 +40,9 @@ def main(page: ft.Page):
 
     def exibir_lista(e):
         lv_nome.controls.clear()
-        for nome in lista:
+        for valor in lista:
             lv_nome.controls.append(
-                ft.Text(value=nome)
+                ft.Text(value= f'Profissão: {user.profissao} - Salário: {user.salario}')
             )
         page.update()
 
@@ -49,7 +58,7 @@ def main(page: ft.Page):
                     # Irá salvar os nomes
                     ft.Button(
                         text="Salvar",
-                        on_click=lambda _: salvar_nome(e),
+                        on_click=lambda _: salvar_tudo(e),
                     ),
                         # Irá mostrar os nomes
                         ft.Button(
@@ -67,7 +76,6 @@ def main(page: ft.Page):
                     [
                         AppBar(title=Text("Segunda tela"), bgcolor=Colors.SECONDARY_CONTAINER),
                         lv_nome,
-                        ft.FloatingActionButton(text="+"),
                     ],
                 )
             )
