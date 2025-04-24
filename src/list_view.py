@@ -15,6 +15,13 @@ def main(page: ft.Page):
     def salvar_nome(e):
             lista.append(input_nome.value)
 
+    def exibir_lista(e):
+        for nome in lista:
+            lv_nome.controls.append(
+                ft.Text(value=nome)
+            )
+        page.update()
+
     def gerencia_rotas(e):
         page.views.clear()
         page.views.append(
@@ -26,16 +33,22 @@ def main(page: ft.Page):
                     ft.Button(
                         text="Salvar",
                         on_click=lambda _: salvar_nome(e),
-                    )
+                    ),
+                        ft.Button(
+                            text="Exibir lista",
+                            on_click=lambda _: page.go("/segunda"),
+                        )
                 ],
             )
         )
         if page.route == "/segunda":
+            exibir_lista(e)
             page.views.append(
                 View(
                     "/segunda",
                     [
                         AppBar(title=Text("Segunda tela"), bgcolor=Colors.SECONDARY_CONTAINER),
+                        lv_nome,
                     ],
                 )
             )
