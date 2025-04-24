@@ -10,6 +10,8 @@ def main(page: ft.Page):
     page.window.width = 375
     page.window.height = 667
 
+    def salvar_nome(e):
+
     # Funções
     def gerencia_rotas(e):
         page.views.clear()
