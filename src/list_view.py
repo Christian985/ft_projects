@@ -13,7 +13,21 @@ def main(page: ft.Page):
     # Funções
     lista = []
     def salvar_nome(e):
+        if input_nome.value == "":
+            # Overlay vai apagar a mensagem anterior
+            page.overlay.append(msg_erro)
+            # Vai abrir a mensagem
+            msg_erro.open = True
+            page.update()
+        else:
+            # Adiciona o valor de input_nome na lista
             lista.append(input_nome.value)
+            input_nome.value = ""
+            # Overlay vai apagar a mensagem anterior
+            page.overlay.append(msg_sucesso)
+            # Vai abrir a mensagem
+            msg_sucesso.open = True
+            page.update()
 
     def exibir_lista(e):
         lv_nome.controls.clear()
@@ -31,10 +45,12 @@ def main(page: ft.Page):
                 [
                     AppBar(title=Text("Home"), bgcolor=Colors.PRIMARY_CONTAINER),
                     input_nome,
+                    # Irá salvar os nomes
                     ft.Button(
                         text="Salvar",
                         on_click=lambda _: salvar_nome(e),
                     ),
+                        # Irá mostrar os nomes
                         ft.Button(
                             text="Exibir lista",
                             on_click=lambda _: page.go("/segunda"),
@@ -50,6 +66,7 @@ def main(page: ft.Page):
                     [
                         AppBar(title=Text("Segunda tela"), bgcolor=Colors.SECONDARY_CONTAINER),
                         lv_nome,
+                        ft.FloatingActionButton(text="+"),
                     ],
                 )
             )
@@ -62,8 +79,15 @@ def main(page: ft.Page):
 
 
     # Componentes
+    msg_sucesso = ft.SnackBar(
+        content=ft.Text("SALVOU"),
+        bgcolor=Colors.GREEN
+    )
+    msg_erro = ft.SnackBar(
+        content=ft.Text("ERRO"),
+        bgcolor=Colors.RED
+    )
     input_nome = ft.TextField(label="Nome")
-    btn_salvar = ft.Button(text="Salvar")
 
     lv_nome = ft.ListView(
         height=500
