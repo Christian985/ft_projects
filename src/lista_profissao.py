@@ -40,9 +40,9 @@ def main(page: ft.Page):
 
     def exibir_lista(e):
         lv_nome.controls.clear()
-        for valor in lista:
+        for use in lista:
             lv_nome.controls.append(
-                ft.Text(value= f'Profissão: {user.profissao} - Salário: {user.salario}')
+                ft.Text(value= f'Profissão: {use.profissao} - Salário: {use.salario}')
             )
         page.update()
 
