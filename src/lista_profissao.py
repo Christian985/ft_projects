@@ -1,6 +1,5 @@
 import flet as ft
 from flet import AppBar, Text, View
-from flet.auth import user
 from flet.core.colors import Colors
 
 class User():
@@ -27,7 +26,7 @@ def main(page: ft.Page):
         else:
             obj_user = User(
                 profissao=input_profissao.value,
-                salario=0,
+                salario=input_salario.value,
             )
             # Adiciona o valor de input_profissão e input_salário na lista
             lista.append(obj_user)
