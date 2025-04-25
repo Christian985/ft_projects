@@ -3,9 +3,9 @@ from flet import AppBar, Text, View
 from flet.core.colors import Colors
 
 class User():
-    def __init__(self, profissao, salario):
-        self.profissao = profissao
-        self.salario = salario
+    def __init__(self, livro, sinopse):
+        self.livro = livro
+        self.sinopse = sinopse
 
 def main(page: ft.Page):
     # Configurações
@@ -17,7 +17,7 @@ def main(page: ft.Page):
     # Funções
     lista = []
     def salvar_tudo(e):
-        if input_profissao.value == "" and input_salario.value == "":
+        if input_livro.value == "" and input_sinopse.value == "":
             # Overlay vai apagar a mensagem anterior
             page.overlay.append(msg_erro)
             # Vai abrir a mensagem
@@ -25,12 +25,12 @@ def main(page: ft.Page):
             page.update()
         else:
             obj_user = User(
-                profissao=input_profissao.value,
-                salario=input_salario.value,
+                livro=input_livro.value,
+                sinopse=input_sinopse.value,
             )
             # Adiciona o valor de input_profissão e input_salário na lista
             lista.append(obj_user)
-            input_profissao.value = ""
+            input_livro.value = ""
             # Overlay vai apagar a mensagem anterior
             page.overlay.append(msg_sucesso)
             # Vai abrir a mensagem
@@ -41,7 +41,7 @@ def main(page: ft.Page):
         lv_nome.controls.clear()
         for use in lista:
             lv_nome.controls.append(
-                ft.Text(value= f'Profissão: {use.profissao} - Salário: {use.salario}')
+                ft.Text(value= f'livro: {use.livro} - Sinopse: {use.sinopse}')
             )
         page.update()
 
@@ -52,14 +52,14 @@ def main(page: ft.Page):
                 "/",
                 [
                     AppBar(title=Text("Home"), bgcolor=Colors.PRIMARY_CONTAINER),
-                    input_profissao,
-                    input_salario,
-                    # Irá salvar os nomes
+                    input_livro,
+                    input_sinopse,
+                    # Irá salvar os conteúdos
                     ft.Button(
                         text="Salvar",
                         on_click=lambda _: salvar_tudo(e),
                     ),
-                        # Irá mostrar os nomes
+                        # Irá mostrar os conteúdos
                         ft.Button(
                             text="Exibir lista",
                             on_click=lambda _: page.go("/segunda"),
