@@ -9,7 +9,7 @@ class User():
 
 def main(page: ft.Page):
     # Configurações
-    page.title = "Trabalho"
+    page.title = "Livros"
     page.theme_mode = ft.ThemeMode.DARK  # ou ft.ThemeMode.DARK
     page.window.width = 375
     page.window.height = 667
@@ -95,8 +95,8 @@ def main(page: ft.Page):
         content=ft.Text("ERRO"),
         bgcolor=Colors.RED
     )
-    input_profissao = ft.TextField(label="Profissão")
-    input_salario = ft.TextField(label="Salário")
+    input_livro = ft.TextField(label="Livro")
+    input_sinopse = ft.TextField(label="Sinopse")
 
     lv_nome = ft.ListView(
         height=500

@@ -54,7 +54,7 @@ def main(page: ft.Page):
                     AppBar(title=Text("Home"), bgcolor=Colors.PRIMARY_CONTAINER),
                     input_profissao,
                     input_salario,
-                    # Irá salvar os nomes
+                    # Irá salvar os Nomes
                     ft.Button(
                         text="Salvar",
                         on_click=lambda _: salvar_tudo(e),
