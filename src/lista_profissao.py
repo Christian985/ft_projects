@@ -1,7 +1,6 @@
 import flet as ft
 from flet import AppBar, Text, View
 from flet.core.colors import Colors
-
 class User():
     def __init__(self, profissao, salario):
         self.profissao = profissao
