@@ -38,14 +38,6 @@ def main(page: ft.Page):
 
     # FIM do salvamento
 
-    # # Vai exibir a lista
-    # def exibir_lista(e):
-    #     lv_nome.controls.clear()
-    #     for nome in lista:
-    #         lv_nome.controls.append(
-    #             ft.Text(value=nome)
-    #         )
-    #     page.update()
 
     # FIM da exibição da lista
 
@@ -60,7 +52,7 @@ def main(page: ft.Page):
                     # Irá entrar na profissao
                     ft.Button(
                         text="Profissão",
-                        on_click=lambda _: page.go('profissao'),
+                        on_click=lambda _: page.go('/profissao'),
                     ),
                     # Irá entrar no livro
                     ft.Button(
@@ -71,7 +63,7 @@ def main(page: ft.Page):
             )
         )
         # Profissão
-        if page.route == "/profissao":
+        if page.route == "/profissao" or page.route == "/livro":
             page.views.append(
                 View(
                     "/profissao",
@@ -106,6 +98,7 @@ def main(page: ft.Page):
                     ],
                 )
             )
+
         page.update()
 
     # FIM do Livro
