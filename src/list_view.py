@@ -1,6 +1,7 @@
 import flet as ft
 from flet import AppBar, Text, View
 from flet.core.colors import Colors
+from models import User, db_session
 
 # Main
 def main(page: ft.Page):
