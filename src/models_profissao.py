@@ -14,8 +14,8 @@ Base.query = db_session.query_property()
 
 
 # Dados da Lista
-class User(Base):
-    __tablename__ = 'users'
+class Profissao(Base):
+    __tablename__ = 'profissoes'
     id = Column(Integer, primary_key=True)
     nome = Column(String(100), nullable=False, index=True)
     cargo = Column(String(100), nullable=False, index=True)
@@ -23,7 +23,9 @@ class User(Base):
 
     # Representação de Classe
     def __repr__(self):
-        return '<User: {} >'.format(self.name)
+        return '<User: {} {} {} >'.format(self.name,
+                                    self.cargo,
+                                    self.salario)
 
     # Função para Salvar no Banco
     def save(self):
@@ -38,7 +40,9 @@ class User(Base):
     # Coloca os Dados na Tabela
     def serialize(self):
         dados_user = {
-            'nome': self.name,
+            'nome': self.nome,
+            'cargo': self.cargo,
+            'salario': self.salario
         }
         return dados_user
 
