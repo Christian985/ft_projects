@@ -36,6 +36,7 @@ def main(page: ft.Page):
                 ft.Text(value=nome)
             )
         page.update()
+    # FIM da exibição da lista
 
     # Transita entre páginas
     def gerencia_rotas(e):
@@ -73,12 +74,13 @@ def main(page: ft.Page):
                 )
             )
         page.update()
+    # FIM da Transsição de Páginas
     # Configura a seta para voltar
     def voltar(e):
         page.views.pop()
         top_view = page.views[-1]
         page.go(top_view.route)
-
+    # FIM da seta de Voltar
 
     # Componentes
     msg_sucesso = ft.SnackBar(
@@ -94,6 +96,7 @@ def main(page: ft.Page):
     lv_nome = ft.ListView(
         height=500
     )
+    # FIM dos Componentes
 
     # Eventos
     page.on_route_change = gerencia_rotas
