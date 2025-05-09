@@ -24,8 +24,11 @@ def main(page: ft.Page):
         else:
             obj_user = User(
                 nome=input_nome.value,
+                cargo=input_cargo.value,
+                salario=input_salario.value,
+
             )
-            # Adiciona o valor de input_nome na lista
+            # Adiciona o valor de input_nome na Lista
             input_nome.value = ""
             # Overlay vai apagar a mensagem anterior
             page.overlay.append(msg_sucesso)
@@ -104,6 +107,7 @@ def main(page: ft.Page):
                 )
             )
         page.update()
+
     # FIM do Livro
     # FIM da Transição de Páginas
 
