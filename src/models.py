@@ -6,12 +6,12 @@ engine = create_engine('sqlite:///list_dados.sqlite3')
 # Gerencia as sessões com o Banco de Dados
 db_session = scoped_session(sessionmaker(bind=engine))
 
-
 # Base_declarativa - Ela permite que você defina Classes Python que representam tabelas de
 # Banco de Dados de forma declarativa, sem a necessidade de configurar manualmente a
 # relação entre as Classes e as Tabelas.
 Base = declarative_base()
 Base.query = db_session.query_property()
+
 
 # Dados da Lista
 class User(Base):
@@ -35,14 +35,16 @@ class User(Base):
 
     # Coloca os Dados na Tabela
     def serialize(self):
-        dados_user ={
+        dados_user = {
             'nome': self.name,
         }
         return dados_user
 
+
 # Método para criar Banco
 def init_db():
     Base.metadata.create_all(bind=engine)
+
 
 if __name__ == '__main__':
     init_db()
