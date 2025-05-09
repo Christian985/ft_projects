@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
 from sqlalchemy.orm import scoped_session, sessionmaker, declarative_base, relationship
 
-engine = create_engine('sqlite:///list_dados.sqlite3')
+engine = create_engine('sqlite:///profissao_dados.sqlite3')
 
 # Gerencia as sessões com o Banco de Dados
 db_session = scoped_session(sessionmaker(bind=engine))
@@ -23,7 +23,7 @@ class Profissao(Base):
 
     # Representação de Classe
     def __repr__(self):
-        return '<User: {} {} {} >'.format(self.name,
+        return '<User: {} {} {} >'.format(self.nome,
                                     self.cargo,
                                     self.salario)
 
