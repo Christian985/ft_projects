@@ -5,7 +5,7 @@ class User():
     def __init__(self, profissao, salario):
         self.profissao = profissao
         self.salario = int(salario)
-
+# Main
 def main(page: ft.Page):
     # Configurações
     page.title = "Trabalho"

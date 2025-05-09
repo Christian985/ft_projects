@@ -6,7 +6,7 @@ class User:
     def __init__(self, livro, sinopse):
         self.livro = livro
         self.sinopse = sinopse
-
+# Main
 def main(page: ft.Page):
     # Configurações
     page.title = "Livros"
