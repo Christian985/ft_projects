@@ -1,7 +1,8 @@
 import flet as ft
 from flet import AppBar, Text, View
 from flet.core.colors import Colors
-class User():
+# Classe do Usuário
+class User:
     def __init__(self, livro, sinopse):
         self.livro = livro
         self.sinopse = sinopse
