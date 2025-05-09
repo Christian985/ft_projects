@@ -62,7 +62,7 @@ def main(page: ft.Page):
                     # Irá entrar no livro
                     ft.Button(
                         text="Livro",
-                        on_click=lambda _: page.go("/livro"),
+                        on_click=lambda _: page.go("/livros"),
                     )
                 ],
             )
