@@ -57,10 +57,9 @@ def main(page: ft.Page):
     def gerencia_rotas(e):
         page.views.clear()
         page.views.append(
-            View(
+            View( # Primeira Página
                 "/",
                 [
-                    # Primeira Página
                     AppBar(title=Text("Home"), bgcolor=Colors.PRIMARY_CONTAINER),
                     input_livro,
                     input_sinopse,

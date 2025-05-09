@@ -35,7 +35,7 @@ def main(page: ft.Page):
                 profissao=input_profissao.value,
                 salario=input_salario.value,
             )
-            # Adiciona o valor de input_nome, input_profissão e input_salário na Lista
+            # Adiciona o Valor de input_nome, input_profissão e input_salário na Lista
             lista.append(obj_user)
             input_nome.value = ""
             input_profissao.value = ""
@@ -93,7 +93,7 @@ def main(page: ft.Page):
                 )
             )
         page.update()
-    # FIM da Transsição de Páginas
+    # FIM da Transição de Páginas
 
     def voltar(e):
         page.views.pop()

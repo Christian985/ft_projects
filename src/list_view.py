@@ -13,6 +13,7 @@ def main(page: ft.Page):
 
     # Funções
     lista = []
+
     # Salva as informações
     def salvar_nome(e):
         if input_nome.value == "":
@@ -46,7 +47,7 @@ def main(page: ft.Page):
     def gerencia_rotas(e):
         page.views.clear()
         page.views.append(
-            View(
+            View( # Primeira Página
                 "/",
                 [
                     AppBar(title=Text("Home"), bgcolor=Colors.PRIMARY_CONTAINER),
@@ -64,7 +65,7 @@ def main(page: ft.Page):
                 ],
             )
         )
-        # Segunda página
+        # Segunda Página
         if page.route == "/segunda":
             exibir_lista(e)
             page.views.append(
@@ -78,7 +79,8 @@ def main(page: ft.Page):
                 )
             )
         page.update()
-    # FIM da Transsição de Páginas
+    # FIM da Transição de Páginas
+
     # Configura a seta para voltar
     def voltar(e):
         page.views.pop()
