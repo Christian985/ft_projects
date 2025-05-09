@@ -1,10 +1,13 @@
 import flet as ft
 from flet import AppBar, Text, View
 from flet.core.colors import Colors
+
+# Classe do Usuário
 class User():
     def __init__(self, profissao, salario):
         self.profissao = profissao
         self.salario = int(salario)
+
 # Main
 def main(page: ft.Page):
     # Configurações
@@ -15,6 +18,8 @@ def main(page: ft.Page):
 
     # Funções
     lista = []
+
+    # Salva as informações
     def salvar_tudo(e):
         # Caso eles não possuam valores
         if input_profissao.value == "" or input_salario.value == "":
@@ -28,7 +33,7 @@ def main(page: ft.Page):
                 profissao=input_profissao.value,
                 salario=input_salario.value,
             )
-            # Adiciona o valor de input_profissão e input_salário na lista
+            # Adiciona o valor de input_profissão e input_salário na Lista
             lista.append(obj_user)
             input_profissao.value = ""
             input_salario.value = ""
@@ -37,7 +42,9 @@ def main(page: ft.Page):
             # Vai abrir a mensagem
             msg_sucesso.open = True
             page.update()
+    # FIM do salvamento
 
+    # Exibe a Lista
     def exibir_lista(e):
         lv_nome.controls.clear()
         for use in lista:
@@ -45,7 +52,9 @@ def main(page: ft.Page):
                 ft.Text(value= f'Profissão: {use.profissao} - Salário: {use.salario}')
             )
         page.update()
+    # FIM da exibição da lista
 
+    # Gerencia o caminho das Rotas
     def gerencia_rotas(e):
         page.views.clear()
         page.views.append(
@@ -80,12 +89,13 @@ def main(page: ft.Page):
                 )
             )
         page.update()
+    # FIM da Transsição de Páginas
 
     def voltar(e):
         page.views.pop()
         top_view = page.views[-1]
         page.go(top_view.route)
-
+    # FIM da seta de Voltar
 
     # Componentes
     msg_sucesso = ft.SnackBar(
@@ -102,13 +112,15 @@ def main(page: ft.Page):
     lv_nome = ft.ListView(
         height=500
     )
+    # FIM dos Componentes
 
     # Eventos
     page.on_route_change = gerencia_rotas
     page.on_view_pop = voltar
 
     page.go(page.route)
+    # FIM dos Eventos
 
-# Comando que executa o aplicativo
+# Comando que executa o Aplicativo
 # Deve estar sempre colado na linha
 ft.app(main)

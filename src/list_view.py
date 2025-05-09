@@ -1,6 +1,7 @@
 import flet as ft
 from flet import AppBar, Text, View
 from flet.core.colors import Colors
+
 # Main
 def main(page: ft.Page):
     # Configurações
@@ -11,6 +12,7 @@ def main(page: ft.Page):
 
     # Funções
     lista = []
+    # Salva as informações
     def salvar_nome(e):
         if input_nome.value == "":
             # Overlay vai apagar a mensagem anterior
@@ -28,6 +30,7 @@ def main(page: ft.Page):
             msg_sucesso.open = True
             page.update()
     # FIM do salvamento
+
     # Vai exibir a lista
     def exibir_lista(e):
         lv_nome.controls.clear()
@@ -38,7 +41,7 @@ def main(page: ft.Page):
         page.update()
     # FIM da exibição da lista
 
-    # Transita entre páginas
+    # Gerencia o caminho das rotas
     def gerencia_rotas(e):
         page.views.clear()
         page.views.append(
@@ -103,6 +106,7 @@ def main(page: ft.Page):
     page.on_view_pop = voltar
 
     page.go(page.route)
+    # FIM dos Eventos
 
 # Comando que executa o aplicativo
 # Deve estar sempre colado na linha

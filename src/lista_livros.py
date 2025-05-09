@@ -1,11 +1,13 @@
 import flet as ft
 from flet import AppBar, Text, View
 from flet.core.colors import Colors
+
 # Classe do Usuário
 class User:
     def __init__(self, livro, sinopse):
         self.livro = livro
         self.sinopse = sinopse
+
 # Main
 def main(page: ft.Page):
     # Configurações
@@ -16,6 +18,8 @@ def main(page: ft.Page):
 
     # Funções
     lista = []
+
+    # Salva as informações
     def salvar_tudo(e):
         if input_livro.value == "" or input_sinopse.value == "":
             # Overlay vai apagar a mensagem anterior
@@ -28,7 +32,7 @@ def main(page: ft.Page):
                 livro=input_livro.value,
                 sinopse=input_sinopse.value,
             )
-            # Adiciona o valor de input_livro e input_sinopse na lista
+            # Adiciona o valor de input_livro e input_sinopse na Lista
             lista.append(obj_user)
             input_livro.value = ""
             input_sinopse.value = ""
@@ -37,6 +41,8 @@ def main(page: ft.Page):
             # Vai abrir a mensagem
             msg_sucesso.open = True
             page.update()
+    # FIM do salvamento
+
     # Exibe a Lista
     def exibir_lista(e):
         lv_nome.controls.clear()
@@ -45,6 +51,8 @@ def main(page: ft.Page):
                 ft.Text(value= f'livro: {use.livro} - Sinopse: {use.sinopse}')
             )
         page.update()
+    # FIM da exibição da lista
+
     # Gerencia o caminho das rotas
     def gerencia_rotas(e):
         page.views.clear()
@@ -52,6 +60,7 @@ def main(page: ft.Page):
             View(
                 "/",
                 [
+                    # Primeira Página
                     AppBar(title=Text("Home"), bgcolor=Colors.PRIMARY_CONTAINER),
                     input_livro,
                     input_sinopse,
@@ -68,6 +77,7 @@ def main(page: ft.Page):
                 ],
             )
         )
+        # Segunda Página
         if page.route == "/segunda":
             exibir_lista(e)
             page.views.append(
@@ -80,11 +90,14 @@ def main(page: ft.Page):
                 )
             )
         page.update()
+    # FIM da Transsição de Páginas
+
     # Configura a seta para voltar
     def voltar(e):
         page.views.pop()
         top_view = page.views[-1]
         page.go(top_view.route)
+    # FIM da seta de Voltar
 
     # Componentes
     msg_sucesso = ft.SnackBar(
@@ -101,12 +114,14 @@ def main(page: ft.Page):
     lv_nome = ft.ListView(
         height=500
     )
+    # FIM dos Componentes
 
     # Eventos
     page.on_route_change = gerencia_rotas
     page.on_view_pop = voltar
 
     page.go(page.route)
+    # FIM dos Eventos
 
 # Comando que executa o aplicativo
 # Deve estar sempre colado na linha
