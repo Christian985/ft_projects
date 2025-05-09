@@ -22,6 +22,9 @@ def main(page: ft.Page):
             msg_erro.open = True
             page.update()
         else:
+            obj_user = User(
+                nome=input_nome.value,
+            )
             # Adiciona o valor de input_nome na lista
             input_nome.value = ""
             # Overlay vai apagar a mensagem anterior
@@ -32,14 +35,14 @@ def main(page: ft.Page):
 
     # FIM do salvamento
 
-    # Vai exibir a lista
-    def exibir_lista(e):
-        lv_nome.controls.clear()
-        for nome in lista:
-            lv_nome.controls.append(
-                ft.Text(value=nome)
-            )
-        page.update()
+    # # Vai exibir a lista
+    # def exibir_lista(e):
+    #     lv_nome.controls.clear()
+    #     for nome in lista:
+    #         lv_nome.controls.append(
+    #             ft.Text(value=nome)
+    #         )
+    #     page.update()
 
     # FIM da exibição da lista
 
@@ -66,13 +69,33 @@ def main(page: ft.Page):
             )
         )
         # Segunda Página
-        if page.route == "/segunda":
-            exibir_lista(e)
+        if page.route == "/segunda" or page.route == "/terceira":
             page.views.append(
                 View(
                     "/segunda",
                     [
-                        AppBar(title=Text("Segunda Tela"), bgcolor=Colors.SECONDARY_CONTAINER),
+                        AppBar(title=Text("segunda"), bgcolor=Colors.PRIMARY_CONTAINER),
+                        input_nome,
+                        # Irá salvar os Nomes
+                        ft.Button(
+                            text="Salvar",
+                            on_click=lambda _: salvar_nome(e),
+                        ),
+                        # Irá mostrar os Nomes
+                        ft.Button(
+                            text="Exibir lista",
+                            on_click=lambda _: page.go("/segunda"),
+                        )
+                    ],
+                )
+            )
+        # Terceira Página
+        if page.route == "/terceira":
+            page.views.append(
+                View(
+                    "/terceira",
+                    [
+                        AppBar(title=Text("terceira Tela"), bgcolor=Colors.SECONDARY_CONTAINER),
                         lv_nome,
                         ft.FloatingActionButton(text="+"),
                     ],
@@ -83,6 +106,7 @@ def main(page: ft.Page):
     # FIM da Transição de Páginas
 
     # Configura a seta para voltar
+
     def voltar(e):
         page.views.pop()
         top_view = page.views[-1]
