@@ -61,7 +61,7 @@ def main(page: ft.Page):
     def gerencia_rotas(e):
         page.views.clear()
         page.views.append(
-            View(
+            View( # Primeira Página
                 "/",
                 [
                     AppBar(title=Text("Home"), bgcolor=Colors.PRIMARY_CONTAINER),
@@ -81,6 +81,7 @@ def main(page: ft.Page):
                 ],
             )
         )
+        # Segunda Página
         if page.route == "/segunda":
             exibir_lista(e)
             page.views.append(
