@@ -32,7 +32,7 @@ def main(page: ft.Page):
             lista.append(obj_user)
             input_livro.value = ""
             input_sinopse.value = ""
-            # Overlay vai apagar a mensagem anterior
+            # Overlay vai apagar as mensagens anteriores
             page.overlay.append(msg_sucesso)
             # Vai abrir a mensagem
             msg_sucesso.open = True
