@@ -90,13 +90,15 @@ def main(page: ft.Page):
                     ],
                 )
             )
+        # FIM da Profissão
+
         # Livro
-        if page.route == "/terceira":
+        if page.route == "/livro":
             page.views.append(
                 View(
-                    "/terceira",
+                    "/livro",
                     [
-                        AppBar(title=Text("terceira Tela"), bgcolor=Colors.SECONDARY_CONTAINER),
+                        AppBar(title=Text("Livro"), bgcolor=Colors.SECONDARY_CONTAINER),
                         lv_nome,
                         ft.FloatingActionButton(text="+"),
                     ],
