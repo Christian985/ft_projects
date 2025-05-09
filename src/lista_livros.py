@@ -28,9 +28,10 @@ def main(page: ft.Page):
                 livro=input_livro.value,
                 sinopse=input_sinopse.value,
             )
-            # Adiciona o valor de input_profissão e input_salário na lista
+            # Adiciona o valor de input_livro e input_sinopse na lista
             lista.append(obj_user)
             input_livro.value = ""
+            input_sinopse.value = ""
             # Overlay vai apagar a mensagem anterior
             page.overlay.append(msg_sucesso)
             # Vai abrir a mensagem
@@ -73,7 +74,7 @@ def main(page: ft.Page):
                 View(
                     "/segunda",
                     [
-                        AppBar(title=Text("Segunda tela"), bgcolor=Colors.SECONDARY_CONTAINER),
+                        AppBar(title=Text("Livros"), bgcolor=Colors.SECONDARY_CONTAINER),
                         lv_nome,
                     ],
                 )
