@@ -68,7 +68,7 @@ def main(page: ft.Page):
             )
         )
         # Profissão
-        if page.route == "/profissao" or page.route == "/livro":
+        if page.route == "/profissao":
             page.views.append(
                 View(
                     "/profissao",
@@ -99,8 +99,7 @@ def main(page: ft.Page):
                     "/livro",
                     [
                         AppBar(title=Text("Livro"), bgcolor=Colors.SECONDARY_CONTAINER),
-                        lv_nome,
-                        ft.FloatingActionButton(text="+"),
+
                     ],
                 )
             )
