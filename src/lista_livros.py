@@ -16,7 +16,7 @@ def main(page: ft.Page):
     # Funções
     lista = []
     def salvar_tudo(e):
-        if input_livro.value == "" and input_sinopse.value == "":
+        if input_livro.value == "" or input_sinopse.value == "":
             # Overlay vai apagar a mensagem anterior
             page.overlay.append(msg_erro)
             # Vai abrir a mensagem

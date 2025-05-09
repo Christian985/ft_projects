@@ -5,7 +5,7 @@ from flet.core.colors import Colors
 class User():
     def __init__(self, profissao, salario):
         self.profissao = profissao
-        self.salario = salario
+        self.salario = int(salario)
 
 def main(page: ft.Page):
     # Configurações
@@ -17,7 +17,8 @@ def main(page: ft.Page):
     # Funções
     lista = []
     def salvar_tudo(e):
-        if input_profissao.value == "" and input_salario.value == "":
+        # Caso eles não possuam valores
+        if input_profissao.value == "" or input_salario.value == "":
             # Overlay vai apagar a mensagem anterior
             page.overlay.append(msg_erro)
             # Vai abrir a mensagem
@@ -31,6 +32,7 @@ def main(page: ft.Page):
             # Adiciona o valor de input_profissão e input_salário na lista
             lista.append(obj_user)
             input_profissao.value = ""
+            input_salario.value = ""
             # Overlay vai apagar a mensagem anterior
             page.overlay.append(msg_sucesso)
             # Vai abrir a mensagem
@@ -73,7 +75,7 @@ def main(page: ft.Page):
                 View(
                     "/segunda",
                     [
-                        AppBar(title=Text("Segunda tela"), bgcolor=Colors.SECONDARY_CONTAINER),
+                        AppBar(title=Text("Lista"), bgcolor=Colors.SECONDARY_CONTAINER),
                         lv_nome,
                     ],
                 )
