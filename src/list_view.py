@@ -28,7 +28,7 @@ def main(page: ft.Page):
             # Vai abrir a mensagem
             msg_sucesso.open = True
             page.update()
-
+    # Vai exibir a lista
     def exibir_lista(e):
         lv_nome.controls.clear()
         for nome in lista:
@@ -37,6 +37,7 @@ def main(page: ft.Page):
             )
         page.update()
 
+    # Transita entre páginas
     def gerencia_rotas(e):
         page.views.clear()
         page.views.append(
@@ -58,6 +59,7 @@ def main(page: ft.Page):
                 ],
             )
         )
+        # Segunda página
         if page.route == "/segunda":
             exibir_lista(e)
             page.views.append(
@@ -71,7 +73,7 @@ def main(page: ft.Page):
                 )
             )
         page.update()
-
+    # Configura a seta para voltar
     def voltar(e):
         page.views.pop()
         top_view = page.views[-1]
