@@ -62,19 +62,21 @@ def main(page: ft.Page):
                     # Irá entrar no livro
                     ft.Button(
                         text="Livro",
-                        on_click=lambda _: page.go("/livros"),
+                        on_click=lambda _: page.go("/livro"),
                     )
                 ],
             )
         )
-        # Segunda Página
-        if page.route == "/segunda" or page.route == "/terceira":
+        # Profissão
+        if page.route == "/profissao" or page.route == "/livro":
             page.views.append(
                 View(
-                    "/segunda",
+                    "/profissao",
                     [
-                        AppBar(title=Text("segunda"), bgcolor=Colors.PRIMARY_CONTAINER),
+                        AppBar(title=Text("Profissão"), bgcolor=Colors.PRIMARY_CONTAINER),
                         input_nome,
+                        input_cargo,
+                        input_salario,
                         # Irá salvar os Nomes
                         ft.Button(
                             text="Salvar",
@@ -88,7 +90,7 @@ def main(page: ft.Page):
                     ],
                 )
             )
-        # Terceira Página
+        # Livro
         if page.route == "/terceira":
             page.views.append(
                 View(
@@ -123,6 +125,8 @@ def main(page: ft.Page):
         bgcolor=Colors.RED
     )
     input_nome = ft.TextField(label="Nome")
+    input_cargo = ft.TextField(label="Cargo")
+    input_salario = ft.TextField(label="Salario")
 
     lv_nome = ft.ListView(
         height=500

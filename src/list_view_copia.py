@@ -116,6 +116,6 @@ def main(page: ft.Page):
     # FIM dos Eventos
 
 
-# Comando que executa o aplicativo
+# Comando que executa o Aplicativo
 # Deve estar sempre colado na linha
 ft.app(main)
