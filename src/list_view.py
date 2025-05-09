@@ -54,16 +54,15 @@ def main(page: ft.Page):
                 "/",
                 [
                     AppBar(title=Text("Home"), bgcolor=Colors.PRIMARY_CONTAINER),
-                    input_nome,
-                    # Irá salvar os Nomes
+                    # Irá entrar na profissao
                     ft.Button(
-                        text="Salvar",
-                        on_click=lambda _: salvar_nome(e),
+                        text="Profissão",
+                        on_click=lambda _: page.go('profissao'),
                     ),
-                    # Irá mostrar os Nomes
+                    # Irá entrar no livro
                     ft.Button(
-                        text="Exibir lista",
-                        on_click=lambda _: page.go("/segunda"),
+                        text="Livro",
+                        on_click=lambda _: page.go("/livro"),
                     )
                 ],
             )
