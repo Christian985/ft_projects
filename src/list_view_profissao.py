@@ -1,7 +1,7 @@
 import flet as ft
 from flet import AppBar, Text, View
 from flet.core.colors import Colors
-from models_profissao import , db_session
+from models_profissao import Profissao, db_session
 
 
 # Main
@@ -15,14 +15,14 @@ def main(page: ft.Page):
     # Funções
     # Salva as informações
     def salvar_nome(e):
-        if input_nome.value == "":
+        if input_nome.value == "" or input_cargo.value == "" or input_salario.value == "":
             # Overlay vai apagar a mensagem anterior
             page.overlay.append(msg_erro)
             # Vai abrir a mensagem
             msg_erro.open = True
             page.update()
         else:
-            obj_user = User(
+            obj_user = Profissao(
                 nome=input_nome.value,
                 cargo=input_cargo.value,
                 salario=input_salario.value,
