@@ -5,7 +5,7 @@ from flet.core.colors import Colors
 # Main
 def main(page: ft.Page):
     # Configurações
-    page.title = "Exemplo de Rotas"
+    page.title = "Exemplo de Rotas "
     page.theme_mode = ft.ThemeMode.DARK  # ou ft.ThemeMode.DARK
     page.window.width = 375
     page.window.height = 667
