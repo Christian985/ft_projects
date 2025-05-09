@@ -17,7 +17,9 @@ Base.query = db_session.query_property()
 class User(Base):
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
-    name = Column(String(100), nullable=False, index=True)
+    nome = Column(String(100), nullable=False, index=True)
+    cargo = Column(String(100), nullable=False, index=True)
+    salario = Column(String(100), nullable=False, index=True)
 
     # Representação de Classe
     def __repr__(self):

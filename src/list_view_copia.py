@@ -1,7 +1,7 @@
 import flet as ft
 from flet import AppBar, Text, View
 from flet.core.colors import Colors
-from models import User, db_session
+from models_profissao import User, db_session
 
 
 # Main
