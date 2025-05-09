@@ -51,12 +51,12 @@ def main(page: ft.Page):
                 [
                     AppBar(title=Text("Home"), bgcolor=Colors.PRIMARY_CONTAINER),
                     input_nome,
-                    # Irá salvar os nomes
+                    # Irá salvar os Nomes
                     ft.Button(
                         text="Salvar",
                         on_click=lambda _: salvar_nome(e),
                     ),
-                        # Irá mostrar os nomes
+                        # Irá mostrar os Nomes
                         ft.Button(
                             text="Exibir lista",
                             on_click=lambda _: page.go("/segunda"),
@@ -71,7 +71,7 @@ def main(page: ft.Page):
                 View(
                     "/segunda",
                     [
-                        AppBar(title=Text("Segunda tela"), bgcolor=Colors.SECONDARY_CONTAINER),
+                        AppBar(title=Text("Segunda Tela"), bgcolor=Colors.SECONDARY_CONTAINER),
                         lv_nome,
                         ft.FloatingActionButton(text="+"),
                     ],
