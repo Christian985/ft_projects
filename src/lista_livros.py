@@ -1,7 +1,6 @@
 import flet as ft
 from flet import AppBar, Text, View
 from flet.core.colors import Colors
-
 class User():
     def __init__(self, livro, sinopse):
         self.livro = livro
@@ -37,7 +36,7 @@ def main(page: ft.Page):
             # Vai abrir a mensagem
             msg_sucesso.open = True
             page.update()
-
+    # Exibe a Lista
     def exibir_lista(e):
         lv_nome.controls.clear()
         for use in lista:
@@ -45,7 +44,7 @@ def main(page: ft.Page):
                 ft.Text(value= f'livro: {use.livro} - Sinopse: {use.sinopse}')
             )
         page.update()
-
+    # Gerencia o caminho das rotas
     def gerencia_rotas(e):
         page.views.clear()
         page.views.append(
@@ -80,12 +79,11 @@ def main(page: ft.Page):
                 )
             )
         page.update()
-
+    # Configura a seta para voltar
     def voltar(e):
         page.views.pop()
         top_view = page.views[-1]
         page.go(top_view.route)
-
 
     # Componentes
     msg_sucesso = ft.SnackBar(
