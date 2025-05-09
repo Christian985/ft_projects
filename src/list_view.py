@@ -77,15 +77,15 @@ def main(page: ft.Page):
                         input_nome,
                         input_cargo,
                         input_salario,
-                        # Irá salvar os Nomes
+                        # Irá salvar os Dados
                         ft.Button(
                             text="Salvar",
                             on_click=lambda _: salvar_nome(e),
                         ),
-                        # Irá mostrar os Nomes
+                        # Irá mostrar os Dados
                         ft.Button(
-                            text="Exibir lista",
-                            on_click=lambda _: page.go("/segunda"),
+                            text="Voltar",
+                            on_click=lambda _: page.go("/"),
                         )
                     ],
                 )
@@ -105,7 +105,7 @@ def main(page: ft.Page):
                 )
             )
         page.update()
-
+    # FIM do Livro
     # FIM da Transição de Páginas
 
     # Configura a seta para voltar
