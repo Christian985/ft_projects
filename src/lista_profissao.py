@@ -4,7 +4,8 @@ from flet.core.colors import Colors
 
 # Classe do Usuário
 class User():
-    def __init__(self, profissao, salario):
+    def __init__(self, nome, profissao, salario):
+        self.nome = nome
         self.profissao = profissao
         self.salario = int(salario)
 
@@ -22,7 +23,7 @@ def main(page: ft.Page):
     # Salva as informações
     def salvar_tudo(e):
         # Caso eles não possuam valores
-        if input_profissao.value == "" or input_salario.value == "":
+        if input_profissao.value == "" or input_salario.value == "" or input_nome.value == "":
             # Overlay vai apagar a mensagem anterior
             page.overlay.append(msg_erro)
             # Vai abrir a mensagem
@@ -30,11 +31,13 @@ def main(page: ft.Page):
             page.update()
         else:
             obj_user = User(
+                nome=input_nome.value,
                 profissao=input_profissao.value,
                 salario=input_salario.value,
             )
-            # Adiciona o valor de input_profissão e input_salário na Lista
+            # Adiciona o valor de input_nome, input_profissão e input_salário na Lista
             lista.append(obj_user)
+            input_nome.value = ""
             input_profissao.value = ""
             input_salario.value = ""
             # Overlay vai apagar a mensagem anterior
@@ -49,7 +52,7 @@ def main(page: ft.Page):
         lv_nome.controls.clear()
         for use in lista:
             lv_nome.controls.append(
-                ft.Text(value= f'Profissão: {use.profissao} - Salário: {use.salario}')
+                ft.Text(value= f'Nome: {use.nome} - Profissão: {use.profissao} - Salário: {use.salario}')
             )
         page.update()
     # FIM da exibição da lista
@@ -62,14 +65,15 @@ def main(page: ft.Page):
                 "/",
                 [
                     AppBar(title=Text("Home"), bgcolor=Colors.PRIMARY_CONTAINER),
+                    input_nome,
                     input_profissao,
                     input_salario,
-                    # Irá salvar os Nomes
+                    # Irá salvar os Dados
                     ft.Button(
                         text="Salvar",
                         on_click=lambda _: salvar_tudo(e),
                     ),
-                        # Irá mostrar os nomes
+                        # Irá mostrar os Dados
                         ft.Button(
                             text="Exibir lista",
                             on_click=lambda _: page.go("/segunda"),
@@ -106,6 +110,7 @@ def main(page: ft.Page):
         content=ft.Text("ERRO"),
         bgcolor=Colors.RED
     )
+    input_nome = ft.TextField(label="Nome")
     input_profissao = ft.TextField(label="Profissão")
     input_salario = ft.TextField(label="Salário")
 
