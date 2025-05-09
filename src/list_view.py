@@ -13,8 +13,6 @@ def main(page: ft.Page):
     page.window.height = 667
 
     # Funções
-    lista = []
-
     # Salva as informações
     def salvar_nome(e):
         if input_nome.value == "":
@@ -25,7 +23,6 @@ def main(page: ft.Page):
             page.update()
         else:
             # Adiciona o valor de input_nome na lista
-            lista.append(input_nome.value)
             input_nome.value = ""
             # Overlay vai apagar a mensagem anterior
             page.overlay.append(msg_sucesso)

@@ -2,12 +2,14 @@ import flet as ft
 from flet import AppBar, Text, View
 from flet.core.colors import Colors
 
+
 # Classe do Usuário
 class User():
     def __init__(self, nome, profissao, salario):
         self.nome = nome
         self.profissao = profissao
         self.salario = int(salario)
+
 
 # Main
 def main(page: ft.Page):
@@ -45,6 +47,7 @@ def main(page: ft.Page):
             # Vai abrir a mensagem
             msg_sucesso.open = True
             page.update()
+
     # FIM do salvamento
 
     # Exibe a Lista
@@ -52,16 +55,17 @@ def main(page: ft.Page):
         lv_nome.controls.clear()
         for use in lista:
             lv_nome.controls.append(
-                ft.Text(value= f'Nome: {use.nome} - Profissão: {use.profissao} - Salário: {use.salario}')
+                ft.Text(value=f'Nome: {use.nome} - Profissão: {use.profissao} - Salário: {use.salario}')
             )
         page.update()
+
     # FIM da exibição da lista
 
     # Gerencia o caminho das Rotas
     def gerencia_rotas(e):
         page.views.clear()
         page.views.append(
-            View( # Primeira Página
+            View(  # Primeira Página
                 "/",
                 [
                     AppBar(title=Text("Home"), bgcolor=Colors.PRIMARY_CONTAINER),
@@ -73,11 +77,11 @@ def main(page: ft.Page):
                         text="Salvar",
                         on_click=lambda _: salvar_tudo(e),
                     ),
-                        # Irá mostrar os Dados
-                        ft.Button(
-                            text="Exibir lista",
-                            on_click=lambda _: page.go("/segunda"),
-                        )
+                    # Irá mostrar os Dados
+                    ft.Button(
+                        text="Exibir lista",
+                        on_click=lambda _: page.go("/segunda"),
+                    )
                 ],
             )
         )
@@ -94,12 +98,14 @@ def main(page: ft.Page):
                 )
             )
         page.update()
+
     # FIM da Transição de Páginas
 
     def voltar(e):
         page.views.pop()
         top_view = page.views[-1]
         page.go(top_view.route)
+
     # FIM da seta de Voltar
 
     # Componentes
@@ -126,6 +132,7 @@ def main(page: ft.Page):
 
     page.go(page.route)
     # FIM dos Eventos
+
 
 # Comando que executa o Aplicativo
 # Deve estar sempre colado na linha
