@@ -8,7 +8,7 @@ from models import User, db_session
 def main(page: ft.Page):
     # Configurações
     page.title = "Exemplo de Rotas"
-    page.theme_mode = ft.ThemeMode.DARK  # ou ft.ThemeMode.DARK
+    page.theme_mode = ft.ThemeMode.DARK  # ou ft.ThemeMode.WHITE
     page.window.width = 375
     page.window.height = 667
 
