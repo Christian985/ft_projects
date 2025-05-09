@@ -84,7 +84,7 @@ def main(page: ft.Page):
                 View(
                     "/segunda",
                     [
-                        AppBar(title=Text("Livros"), bgcolor=Colors.SECONDARY_CONTAINER),
+                        AppBar(title=Text("Livros e detalhes"), bgcolor=Colors.SECONDARY_CONTAINER),
                         lv_nome,
                     ],
                 )
