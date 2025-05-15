@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="list_dados" uuid="4683feae-9042-47e7-abd8-c54af640e849">
+    <data-source source="LOCAL" name="profissao_dados" uuid="8acdbef0-aace-4a60-b302-d745142912d0">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\senai_24_25\PycharmProjects\simu_aposentadoria\src\list_dados.sqlite3</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\senai_24_25\PycharmProjects\simu_aposentadoria\src\profissao_dados.sqlite3</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <libraries>
         <library>
