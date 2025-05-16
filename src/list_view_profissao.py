@@ -32,6 +32,8 @@ def main(page: ft.Page):
             input_nome.value = ""
             input_cargo.value = ""
             input_salario.value = ""
+            db_session.add(obj_user)
+            db_session.commit()
             # Overlay vai apagar a mensagem anterior
             page.overlay.append(msg_sucesso)
             # Vai abrir a mensagem
