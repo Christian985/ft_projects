@@ -28,7 +28,7 @@ def main(page: ft.Page):
                 salario=input_salario.value,
 
             )
-            # Adiciona o valor de input_nome na Lista
+            # Adiciona o valor de input_nome, input_cargo e input_salario na Lista
             input_nome.value = ""
             input_cargo.value = ""
             input_salario.value = ""
