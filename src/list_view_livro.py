@@ -1,7 +1,7 @@
 import flet as ft
 from flet import AppBar, Text, View
 from flet.core.colors import Colors
-from models_profissao import User, db_session
+from models_livro import Livro, db_session
 
 
 # Main
@@ -14,22 +14,24 @@ def main(page: ft.Page):
 
     # Funções
     # Salva as informações
-    def salvar_nome(e):
-        if input_nome.value == "":
+    def salvar_livro(e):
+        if input_livro.value == "" or input_sinopse.value == "":
             # Overlay vai apagar a mensagem anterior
             page.overlay.append(msg_erro)
             # Vai abrir a mensagem
             msg_erro.open = True
             page.update()
         else:
-            obj_user = User(
-                nome=input_nome.value,
-                cargo=input_cargo.value,
-                salario=input_salario.value,
+            obj_user = Livro(
+                livro=input_livro.value,
+                sinopse=input_sinopse.value,
 
             )
-            # Adiciona o valor de input_nome na Lista
-            input_nome.value = ""
+            # Adiciona o valor de input_livro e input_sinopse na Lista
+            input_livro.value = ""
+            input_sinopse.value = ""
+            db_session.add(obj_user)
+            db_session.commit()
             # Overlay vai apagar a mensagem anterior
             page.overlay.append(msg_sucesso)
             # Vai abrir a mensagem
@@ -37,7 +39,6 @@ def main(page: ft.Page):
             page.update()
 
     # FIM do salvamento
-
 
     # FIM da exibição da lista
 
@@ -49,33 +50,27 @@ def main(page: ft.Page):
                 "/",
                 [
                     AppBar(title=Text("Home"), bgcolor=Colors.PRIMARY_CONTAINER),
-                    # Irá entrar na profissao
-                    ft.Button(
-                        text="Profissão",
-                        on_click=lambda _: page.go('/profissao'),
-                    ),
                     # Irá entrar no livro
                     ft.Button(
-                        text="Livro",
-                        on_click=lambda _: page.go("/livro"),
-                    )
+                        text="Livros",
+                        on_click=lambda _: page.go('/livro'),
+                    ),
                 ],
             )
         )
-        # Profissão
-        if page.route == "/profissao" or page.route == "/livro":
+        # Livro
+        if page.route == "/livro":
             page.views.append(
                 View(
-                    "/profissao",
+                    "/livro",
                     [
-                        AppBar(title=Text("Profissão"), bgcolor=Colors.PRIMARY_CONTAINER),
-                        input_nome,
-                        input_cargo,
-                        input_salario,
+                        AppBar(title=Text("Livro"), bgcolor=Colors.PRIMARY_CONTAINER),
+                        input_livro,
+                        input_sinopse,
                         # Irá salvar os Dados
                         ft.Button(
                             text="Salvar",
-                            on_click=lambda _: salvar_nome(e),
+                            on_click=lambda _: salvar_livro(e),
                         ),
                         # Irá mostrar os Dados
                         ft.Button(
@@ -85,23 +80,10 @@ def main(page: ft.Page):
                     ],
                 )
             )
-        # FIM da Profissão
-
-        # Livro
-        if page.route == "/livro":
-            page.views.append(
-                View(
-                    "/livro",
-                    [
-                        AppBar(title=Text("Livro"), bgcolor=Colors.SECONDARY_CONTAINER),
-
-                    ],
-                )
-            )
+        # FIM do Livro
 
         page.update()
 
-    # FIM do Livro
     # FIM da Transição de Páginas
 
     # Configura a seta para voltar
@@ -122,11 +104,10 @@ def main(page: ft.Page):
         content=ft.Text("ERRO"),
         bgcolor=Colors.RED
     )
-    input_nome = ft.TextField(label="Nome")
-    input_cargo = ft.TextField(label="Cargo")
-    input_salario = ft.TextField(label="Salario")
+    input_livro = ft.TextField(label="Livro")
+    input_sinopse = ft.TextField(label="Sinopse")
 
-    lv_nome = ft.ListView(
+    lv_livro = ft.ListView(
         height=500
     )
     # FIM dos Componentes

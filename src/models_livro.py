@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
 from sqlalchemy.orm import scoped_session, sessionmaker, declarative_base, relationship
 
-engine = create_engine('sqlite:///profissao_dados.sqlite3')
+engine = create_engine('sqlite:///livro_dados.sqlite3')
 
 # Gerencia as sessões com o Banco de Dados
 db_session = scoped_session(sessionmaker(bind=engine))
@@ -14,18 +14,17 @@ Base.query = db_session.query_property()
 
 
 # Dados da Lista
-class Profissao(Base):
-    __tablename__ = 'profissoes'
+class Livro(Base):
+    __tablename__ = 'livros'
     id = Column(Integer, primary_key=True)
-    nome = Column(String(100), nullable=False, index=True)
-    cargo = Column(String(100), nullable=False, index=True)
-    salario = Column(String(100), nullable=False, index=True)
+    livro = Column(String(100), nullable=False, index=True)
+    sinopse = Column(String(100), nullable=False, index=True)
 
     # Representação de Classe
     def __repr__(self):
-        return '<User: {} {} {} >'.format(self.nome,
-                                    self.cargo,
-                                    self.salario)
+        return '<User: {} {} >'.format(self.livro,
+                                          self.sinopse
+                                          )
 
     # Função para Salvar no Banco
     def save(self):
@@ -40,9 +39,8 @@ class Profissao(Base):
     # Coloca os Dados na Tabela
     def serialize(self):
         dados_user = {
-            'nome': self.nome,
-            'cargo': self.cargo,
-            'salario': self.salario
+            'livro': self.livro,
+            'sinopse': self.sinopse,
         }
         return dados_user
 
